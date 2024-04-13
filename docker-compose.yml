@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  outline:
+    build:
+      context: ./outline
+      dockerfile: Dockerfile
+    container_name: outline-vpn
+    ports:
+      - "1080:1080"
+
+  pac-server:
+    build:
+      context: ./pac-server
+      dockerfile: Dockerfile
+    depends_on:
+      - outline-vpn
+    ports:
+      - "8999:80"
+    container_name: pac-server
+    volumes:
+      - ./pac-server:/usr/src/app
