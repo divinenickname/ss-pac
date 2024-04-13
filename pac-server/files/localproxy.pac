@@ -1,10 +1,5 @@
 function FindProxyForURL(url, host) {
-    const hosts = [ 
-        "rutracker.org",
-        "2ip.ru",
-        "chat.openai.com",
-        "cdn.oaistatic.com"
-    ]
+    const hosts = [ "place urls here" ]
 
     var proxy = "SOCKS localhost:1080"
 
