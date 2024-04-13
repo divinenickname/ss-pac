@@ -1,6 +1,8 @@
 # Shadowsocks with .pac (ss-pac)
 A simple, home-ready solution for traffic routing using the Shadowsocks protocol. If you don't want to switch proxies just to access certain sites, this solution can help you.
 
+You can configure the list of sites that you want to open through the proxy. The server returns a .pac file which you can use in your system settings.
+
 ## Getting starting
 **Prerequisites:** You need to have Docker and Docker Compose installed. If you are not familiar with these tools, please refer to this [link](https://www.docker.com/products/docker-desktop/).
 
@@ -13,6 +15,7 @@ A simple, home-ready solution for traffic routing using the Shadowsocks protocol
     1. Find the line `const hosts = [ "place urls here" ]`
     1. Add the URLs you need. For example, if you want add `google.com` and `bing.com` the `hosts` variable should look like this: `const hosts = ["google.com", "bing.com"];`
 1. Run the following command in the terminal: `docker compose up -d`.
+1. Add link `http://localhost:8999/localproxy.pac` to your system settings. [See more](#where-should-i-place-pac-link)
 1. Enjoy!
 
 ### How to configure config.json?
@@ -33,3 +36,16 @@ If you have outline link like `ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpRd2VydHkxMjM@
 `Qwerty123` - password  
 `192.168.0.35` - server  
 `123456` - password
+
+### Where should I place pac link?
+The service generates a .pac file which you should place in the system settings field. Note that the procedure may vary across different systems.
+
+PAC URL: `http://localhost:8999/localproxy.pac`
+
+#### Windows
+Start -> Settings -> Network & Internet -> Proxy -> Use Setup Script -> URL  
+[Microsoft documentation](https://support.microsoft.com/en-us/windows/use-a-proxy-server-in-windows-03096c53-0554-4ffe-b6ab-8b1deee8dae1#ID0EFD=Windows_10)
+
+#### Mac OS
+System Settings -> Network -> Details - Proxies -> Automatic proxy configuration -> URL
+[Apple documentation](https://support.apple.com/zh-sg/guide/mac-help/mchlp2591/mac)
