@@ -14,7 +14,7 @@ services:
       context: ./pac-server
       dockerfile: Dockerfile
     depends_on:
-      - outline-vpn
+      - outline
     ports:
       - "8999:80"
     container_name: pac-server
